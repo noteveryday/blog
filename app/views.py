@@ -13,6 +13,9 @@ class NameForm(Form):
     name = StringField('What is your name?', validators=[Required()])
     email = StringField('What\'s your email', validators=[Email()])
     submit = SubmitField('Submit')
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
 @app.route('/', methods = ['GET', 'POST'])
 def index():
     # user = {'nickname': 'Miguel'}
